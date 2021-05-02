@@ -1,114 +1,98 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
-</p>
-
-<h3 align="center">Project Title</h3>
-
-<div align="center">
-
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
-
-</div>
 
 ---
-
-<p align="center"> Few lines describing your project.
-    <br> 
-</p>
-
-## 📝 Table of Contents
-
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
-
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
+The project was created for academic purposes. Consists of unification archive measurement data from range 2000-2019 with existing database.<br>
+Measurement data were combined with meteorological data using Dask and distributed computing provided by Coiled<br>
+The model was trained using Xgboost and Optuna for hyperparameter tunning, which reached an RMSE of 6,932 [µg / m3].
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+### Links to data:
+https://powietrze.gios.gov.pl/pjp/archives
+https://powietrze.gios.gov.pl/pjp/content/api 
+https://danepubliczne.imgw.pl/data/<br>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-### Prerequisites
+## 🏁 Installing
 
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
+- Python 3.8.3
 
 ```
-Give the example
+git clone https://github.com/Santhin/air-pollution.git
 ```
 
-And repeat
+Installing dependencies:
 
 ```
-until finished
+pip install -r requirements.txt
+or 
+poetry install
+```
+Run jupyter notebook with:
+```
+jupyter notebook
+```
+To install coiled software environment:
+```
+import coiled
+
+coiled.create_software_environment(
+    name="my-software-env",
+    conda="coiled-environment-py38.yml",
+)
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
-
-## 🔧 Running the tests <a name = "tests"></a>
-
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+### Project structure
 ```
-Give an example
+├── coiled-environment-py38.yml
+├── data
+│   ├── dictionaries
+│   │   ├── IndeksJakosciPowietrza.csv
+│   │   ├── Indeks\ jako\305\233ci\ powietrza\ gio\305\233.xlsx
+│   │   ├── IndeksJakosciPowietrza.xlsx
+│   │   ├── Kody_stacji_pomiarowych.xlsx
+│   │   ├── Matching_stations
+│   │   │   ├── SmogoliczkaStacje.csv
+│   │   │   └── SynopStacje.csv
+│   │   ├── Metadane\ -\ stacje\ i\ stanowiska\ pomiarowe.xlsx
+│   │   ├── Normy.pkl
+│   │   ├── PomiarySample.pkl
+│   │   ├── response_api_gios.json
+│   │   ├── RodzajeParametrow.csv
+│   │   ├── rodzaje_parametrow.pkl
+│   │   ├── SensoryPomiarowe.csv
+│   │   ├── SensoryPomiarowe.pkl
+│   │   ├── stacje_pom_api.json
+│   │   ├── StacjePomiarowe.xlsx
+│   │   └── stacjeSmogoliczka.csv
+│   ├── IndeksJakosciPowietrza.csv
+│   └── train_data.csv
+├── LICENSE
+├── notebooks
+│   ├── Air\ Quality\ Index\ Gios.ipynb
+│   ├── eda\ without\ progress-Copy4.ipynb
+│   ├── Filtering\ excel\ files\ and\ picking\ right\ parameters.ipynb
+│   ├── Fixing\ missing\ lat\ and\ lon\ in\ stations\ .ipynb
+│   ├── loader_sql.py
+│   ├── Matching\ stations\ synop\ with\ Smogoliczka\ .ipynb
+│   ├── Matching\ synop\ data\ with\ smogoliczka.ipynb
+│   ├── Matching\ Synop\ with\ Smogoliczka\ final.ipynb
+│   ├── ML\ PM2.5.ipynb
+│   ├── New\ Strategy\ script\ for\ excel\ files.ipynb
+│   ├── __pycache__
+│   │   └── loader_sql.cpython-38.pyc
+│   ├── Repairing\ stations\ names\ and\ merging\ into\ one\ .ipynb
+│   └── Smogoliczka\ API\ to\ pomiary_pivot.ipynb
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+└── requirements.txt
 ```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
-
-Add notes about how to use the system.
-
-## 🚀 Deployment <a name = "deployment"></a>
-
-Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [MsSQL](https://www.microsoft.com/pl-pl/sql-server/sql-server-downloads) - Database
+- [S3Bucket](https://aws.amazon.com/s3/) - Cloud storage
+- [Coiled](https://coiled.io/) - Distributed computing
+- [Dask](https://dask.org/) - Preprocessing data
+- [Optuna](https://optuna.org/) - Hyperparameter optimization
+- [Xgboost](https://xgboost.readthedocs.io/en/latest/) - ML
